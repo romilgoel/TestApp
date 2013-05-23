@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+	<head>
 		<title>Example 10-1</title>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" id="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
@@ -30,11 +30,21 @@
 				if(pgr == true) {
 					//Clear the current orientation
 					ac.innerHTML = "";
+					setInterval(function(){
 					//get the current orientation
 					navigator.accelerometer.getCurrentAcceleration(onAccelSuccess, onAccelFailure);
+					
+					}, 500);
+					
 				} else {
 					alert("Please wait,\nPhoneGap is not ready.");
 				}
+			}
+			
+			function clearOrientation()
+			{
+				alert("cleared");
+				clearInterval();
 			}
 
 			function onAccelSuccess(accel) {
@@ -59,6 +69,7 @@
 		</p>
 		<p>
 			<input type="button" value="Refresh Orientation" onclick="getOrientation();">
+			<input type="button" value="Clear" onclick="clearOrientation();">
 		</p>
 		<p id="accelInfo">
 			Nothing to see here (yet), click the button.
